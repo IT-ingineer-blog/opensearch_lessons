@@ -1,0 +1,12 @@
+version: '3'
+services:
+  opensearch: # This is also the hostname of the container within the Docker network (i.e. https://opensearch-node1/)
+    image: opensearchproject/opensearch:latest
+    container_name: opensearch-node1
+    environment:
+      - cluster.name=mycluster
+      - discovery.type=single-node
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=admin # Sets the demo admin user password when using demo configuration (for OpenSearch 2.12 and later)
+    ports:
+      - 9200:9200 # REST API
+      - 9600:9600 # Performance Analyzer
